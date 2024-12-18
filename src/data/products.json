@@ -1,0 +1,345 @@
+[
+  {
+    "id": "fittings-pipes-1",
+    "name": "وصلة أنابيب 1",
+    "category": "fittings-pipes",
+    "image": "/src/images/products/fittings-pipes/1.jpg",
+    "description": "وصلة أنابيب عالية الجودة لتوصيل الأنابيب ببعضها البعض."
+  },
+  {
+    "id": "fittings-pipes-2",
+    "name": "وصلة أنابيب 2",
+    "category": "fittings-pipes",
+    "image": "/src/images/products/fittings-pipes/2.jpg",
+    "description": "وصلة أنابيب متينة وموثوقة لمختلف التطبيقات."
+  },
+  {
+    "id": "fittings-pipes-3",
+    "name": "وصلة أنابيب 3",
+    "category": "fittings-pipes",
+    "image": "/src/images/products/fittings-pipes/3.jpeg",
+    "description": "وصلة أنابيب فعالة لتوصيل الأنابيب بشكل آمن."
+  },
+  {
+    "id": "fittings-pipes-4",
+    "name": "وصلة أنابيب 4",
+    "category": "fittings-pipes",
+    "image": "/src/images/products/fittings-pipes/4.jpeg",
+    "description": "وصلة أنابيب قوية ومتينة لمختلف أحجام الأنابيب."
+  },
+  {
+    "id": "fittings-pipes-5",
+    "name": "وصلة أنابيب 5",
+    "category": "fittings-pipes",
+    "image": "/src/images/products/fittings-pipes/5.jpeg",
+    "description": "وصلة أنابيب سهلة التركيب والاستخدام."
+  },
+  {
+    "id": "fittings-pipes-6",
+    "name": "وصلة أنابيب 6",
+    "category": "fittings-pipes",
+    "image": "/src/images/products/fittings-pipes/6.jpeg",
+    "description": "وصلة أنابيب متعددة الاستخدامات لتوصيل الأنابيب المختلفة."
+  },
+  {
+    "id": "gas-tanks-1",
+    "name": "خزان غاز 1000 لتر أفقي مدفون",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/1000 لتر افقي مدفون.jpeg",
+    "description": "خزان غاز سعته 1000 لتر، تصميم أفقي ومدفون."
+  },
+  {
+    "id": "gas-tanks-2",
+    "name": "خزان غاز 1000 لتر مدفون",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/1000 لتر مدفون.jpeg",
+    "description": "خزان غاز سعته 1000 لتر، تصميم مدفون."
+  },
+  {
+    "id": "gas-tanks-3",
+    "name": "خزان غاز 1750 لتر مدفون",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/1750 مدفون.jpeg",
+    "description": "خزان غاز سعته 1750 لتر، تصميم مدفون."
+  },
+    {
+    "id": "gas-tanks-4",
+    "name": "خزان غاز 7000 لتر مدفون",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/7000 لتر مدفون.jpeg",
+    "description": "خزان غاز سعته 7000 لتر، تصميم مدفون."
+  },
+ {
+    "id": "gas-tanks-5",
+    "name": "خزان غاز 4000 لتر",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/خزان 4000 لتر.jpeg",
+    "description": "خزان غاز سعته 4000 لتر."
+  },
+ {
+    "id": "gas-tanks-6",
+    "name": "خزان غاز 1750 لتر",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/خزان غاز 1750.jpeg",
+    "description": "خزان غاز سعته 1750 لتر."
+  },
+ {
+    "id": "gas-tanks-7",
+    "name": "خزان غاز 7000 لتر",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/خزان غاز 7000 لتر.jpeg",
+    "description": "خزان غاز سعته 7000 لتر."
+  },
+  {
+    "id": "gas-tanks-8",
+    "name": "خزان غاز 1000 لتر",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/خزان غاز1000 لتر.jpeg",
+    "description": "خزان غاز سعته 1000 لتر."
+  },
+    {
+    "id": "gas-tanks-9",
+    "name": "خزان غاز 2000 لتر",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/خزان2000 لتر.jpeg",
+    "description": "خزان غاز سعته 2000 لتر."
+  },
+  {
+    "id": "gas-tanks-10",
+    "name": "خزان غاز 500 لتر مدفون",
+    "category": "gas-tanks",
+    "image": "/src/images/products/gas-tanks/خزن500 لتر مدفون.jpeg",
+    "description": "خزان غاز سعته 500 لتر، تصميم مدفون."
+  },
+  {
+    "id": "links-connections-1",
+    "name": "وصلات توصيل 1",
+    "category": "links-connections",
+    "image": "/src/images/products/links-connections/اكسسوارات1.jpg",
+    "description": "وصلات توصيل عالية الجودة لتوصيل الأنابيب والملحقات."
+  },
+  {
+    "id": "links-connections-2",
+    "name": "وصلات توصيل 2",
+    "category": "links-connections",
+    "image": "/src/images/products/links-connections/اكسسوارات2.jpeg",
+    "description": "وصلات توصيل متينة وموثوقة لمختلف التطبيقات."
+  },
+    {
+    "id": "links-connections-3",
+    "name": "وصلات توصيل 3",
+    "category": "links-connections",
+    "image": "/src/images/products/links-connections/اكسسوارات3.jpeg",
+    "description": "وصلات توصيل فعالة لتوصيل الأنابيب بشكل آمن."
+  },
+  {
+    "id": "links-connections-4",
+    "name": "وصلات توصيل 4",
+    "category": "links-connections",
+    "image": "/src/images/products/links-connections/اكسسوارات4.jpeg",
+    "description": "وصلات توصيل قوية ومتينة لمختلف أحجام الأنابيب."
+  },
+{
+    "id": "links-connections-5",
+    "name": "وصلات توصيل 5",
+    "category": "links-connections",
+    "image": "/src/images/products/links-connections/اكسسوارات5.jpeg",
+    "description": "وصلات توصيل سهلة التركيب والاستخدام."
+  },
+  {
+    "id": "measure-pressure-1",
+    "name": "ساعة ضغط مزدوجة",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/ساعات ضغط/2ساعة-ضغط.jpg",
+    "description": "ساعة ضغط مزدوجة لقياس ضغط الغاز بدقة."
+  },
+  {
+    "id": "measure-pressure-2",
+    "name": "ساعات ضغط",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/ساعات ضغط/ساعات-ضغط.jpeg",
+    "description": "مجموعة من ساعات الضغط لقياس ضغط الغاز بدقة."
+  },
+    {
+    "id": "measure-pressure-3",
+    "name": "ساعة ضغط",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/ساعات ضغط/ساعة-ضغط.jpg",
+    "description": "ساعة ضغط لقياس ضغط الغاز بدقة."
+  },
+  {
+    "id": "measure-pressure-4",
+    "name": "عداد استهلاك غاز 1",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/عدادات استهلاك غاز/عداد-استهلاك-غاز1.jpg",
+    "description": "عداد استهلاك غاز لقياس كمية الغاز المستهلكة."
+  },
+  {
+    "id": "measure-pressure-5",
+    "name": "عداد استهلاك غاز 2",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/عدادات استهلاك غاز/عداد-استهلاك-غاز2.jpg",
+    "description": "عداد استهلاك غاز لقياس كمية الغاز المستهلكة بدقة."
+  },
+ {
+    "id": "measure-pressure-6",
+    "name": "منظم ضغط عالي",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/منظمات ضغط/منظم ضغط عالي.jpg",
+    "description": "منظم ضغط عالي للتحكم في ضغط الغاز."
+  },
+  {
+    "id": "measure-pressure-7",
+    "name": "منظم ضغط",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/منظمات ضغط/منظم-ضغط.jpeg",
+    "description": "منظم ضغط للتحكم في ضغط الغاز بدقة."
+  },
+    {
+    "id": "measure-pressure-8",
+    "name": "منظم ضغط 2",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/منظمات ضغط/منظم-ضغط2.jpg",
+    "description": "منظم ضغط للتحكم في ضغط الغاز بكفاءة."
+  },
+  {
+    "id": "measure-pressure-9",
+    "name": "منظم ضغط 3",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/منظمات ضغط/منظم-ضغط3.jpg",
+    "description": "منظم ضغط عالي الجودة للتحكم في ضغط الغاز."
+  },
+  {
+    "id": "measure-pressure-10",
+    "name": "منظم ضغط 4",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/منظمات ضغط/منظم-ضغط4.jpeg",
+    "description": "منظم ضغط متين وموثوق للتحكم في ضغط الغاز."
+  },
+  {
+    "id": "measure-pressure-11",
+    "name": "منظم مرحلة ثابتة",
+    "category": "measure-pressure",
+    "image": "/src/images/products/measure-pressure/منظمات ضغط/منظم-مرحلة-ثابته.jpeg",
+    "description": "منظم مرحلة ثابتة للتحكم في ضغط الغاز بثبات."
+  },
+{
+    "id": "safety-1",
+    "name": "صمام قفل أوتوماتيكي 1",
+    "category": "safety",
+    "image": "/src/images/products/safety/صمامات قفل اوتوماتيكي/صمام-قفل-اوتوماتيكي1.jpg",
+    "description": "صمام قفل أوتوماتيكي لضمان السلامة ومنع تسرب الغاز."
+  },
+  {
+    "id": "safety-2",
+    "name": "صمام قفل أوتوماتيكي 2",
+    "category": "safety",
+    "image": "/src/images/products/safety/صمامات قفل اوتوماتيكي/صمام-قفل-اوتوماتيكي2.jpeg",
+    "description": "صمام قفل أوتوماتيكي عالي الجودة لضمان أقصى درجات السلامة."
+  },
+  {
+    "id": "safety-3",
+    "name": "صمام قفل أوتوماتيكي 3",
+    "category": "safety",
+    "image": "/src/images/products/safety/صمامات قفل اوتوماتيكي/صمام-قفل-اوتوماتيكي3.jpeg",
+    "description": "صمام قفل أوتوماتيكي سهل التركيب والاستخدام."
+  },
+  {
+    "id": "safety-4",
+    "name": "كاشف تسريب غاز منزلي 1",
+    "category": "safety",
+    "image": "/src/images/products/safety/كواشف تسريب غاز منزلية/كاشف-تسرب-غاز1.jpg",
+    "description": "كاشف تسريب غاز منزلي للكشف المبكر عن تسرب الغاز."
+  },
+    {
+    "id": "safety-5",
+    "name": "كاشف تسريب غاز منزلي 2",
+    "category": "safety",
+    "image": "/src/images/products/safety/كواشف تسريب غاز منزلية/كاشف-تسرب-غاز2.jpeg",
+    "description": "كاشف تسريب غاز منزلي دقيق وموثوق."
+  },
+{
+    "id": "safety-6",
+    "name": "كاشف غاز عادي",
+    "category": "safety",
+    "image": "/src/images/products/safety/كواشف تسريب غاز منزلية/كاشف-غاز-عادي.jpg",
+    "description": "كاشف غاز عادي للكشف عن تسرب الغاز."
+  },
+{
+    "id": "safety-7",
+    "name": "كاشف ضد الإنفجار 1",
+    "category": "safety",
+    "image": "/src/images/products/safety/كواشف ضد الإنفجار/كاشف-ضد-انفجار1.jpg",
+    "description": "كاشف ضد الإنفجار لضمان السلامة في المناطق الخطرة."
+  },
+  {
+    "id": "safety-8",
+    "name": "كاشف ضد الإنفجار 2",
+    "category": "safety",
+    "image": "/src/images/products/safety/كواشف ضد الإنفجار/كاشف-ضد-انفجار2.jpg",
+    "description": "كاشف ضد الإنفجار عالي الجودة لضمان أقصى درجات السلامة."
+  },
+  {
+    "id": "safety-9",
+    "name": "لوحة تحكم 8 زون",
+    "category": "safety",
+    "image": "/src/images/products/safety/لوحات تحكم/كنترول بينات8 زون.jpg",
+    "description": "لوحة تحكم 8 زون للتحكم في أنظمة السلامة."
+  },
+  {
+    "id": "valves-1",
+    "name": "محبس غاز رئيسي",
+    "category": "valves",
+    "image": "/src/images/products/valves/محبس1.jpg",
+    "description": "محبس غاز رئيسي للتحكم في تدفق الغاز."
+  },
+    {
+    "id": "valves-2",
+    "name": "محبس غاز 2",
+    "category": "valves",
+    "image": "/src/images/products/valves/محبس2.jpeg",
+    "description": "محبس غاز للتحكم في تدفق الغاز بدقة."
+  },
+{
+    "id": "valves-3",
+    "name": "محبس غاز 3",
+    "category": "valves",
+    "image": "/src/images/products/valves/محبس3.jpeg",
+    "description": "محبس غاز عالي الجودة للتحكم في تدفق الغاز."
+  },
+    {
+    "id": "valves-4",
+    "name": "محبس غاز 4",
+    "category": "valves",
+    "image": "/src/images/products/valves/محابس4.jpeg",
+    "description": "محبس غاز متين وموثوق للتحكم في تدفق الغاز."
+  },
+    {
+    "id": "valves-5",
+    "name": "محبس غاز 5",
+    "category": "valves",
+    "image": "/src/images/products/valves/محابس5.jpeg",
+    "description": "محبس غاز سهل التركيب والاستخدام."
+  },
+    {
+    "id": "valves-6",
+    "name": "محبس غاز 6",
+    "category": "valves",
+    "image": "/src/images/products/valves/محابس6.jpeg",
+    "description": "محبس غاز متعدد الاستخدامات للتحكم في تدفق الغاز."
+  },
+{
+    "id": "valves-7",
+    "name": "محبس غاز 7",
+    "category": "valves",
+    "image": "/src/images/products/valves/محبس7.jpeg",
+    "description": "محبس غاز للتحكم في تدفق الغاز بكفاءة."
+  },
+  {
+    "id": "valves-8",
+    "name": "محبس غاز 8",
+    "category": "valves",
+    "image": "/src/images/products/valves/محبس8.jpeg",
+    "description": "محبس غاز عالي الجودة للتحكم في تدفق الغاز."
+  }
+]

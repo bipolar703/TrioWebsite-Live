@@ -1,0 +1,666 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Cairo', sans-serif;
+  }
+  
+  body {
+    direction: rtl;
+  }
+
+  /* LTR for numbers and English text */
+  .ltr {
+    direction: ltr;
+    display: inline-block;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .transition-custom {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-l from-primary to-accent;
+  }
+
+  .card-hover {
+    @apply hover:shadow-lg hover:-translate-y-1 transition-custom;
+  }
+
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  .transition-smooth {
+    @apply transition-all duration-1000 ease-out;
+  }
+
+  .min-h-card {
+    min-height: 24rem;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Swiper custom styles */
+.swiper-button-next,
+.swiper-button-prev {
+  @apply bg-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm transition-all;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  @apply bg-white/30 scale-110;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  @apply text-2xl;
+}
+
+.swiper-pagination-bullet {
+  @apply bg-white/50 w-2 h-2 transition-all;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-white w-8 h-2;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-overlayFadeIn {
+  animation: overlayFadeIn 0.8s ease-out forwards;
+}
+
+/* Add to existing CSS */
+.client-logos-slider .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.client-logos-slider img {
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.client-logos-slider img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-grid-primary {
+  background-image: linear-gradient(to right, rgba(12, 120, 189, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(12, 120, 189, 0.1) 1px, transparent 1px);
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+/* Energy animation for footer */
+@keyframes energyPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.energy-pulse {
+  animation: energyPulse 3s ease-in-out infinite;
+}
+
+/* Add these new animations to your existing CSS */
+
+@keyframes energyParticle {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(var(--tx, 100px), var(--ty, -100px)) scale(1.5);
+  }
+  100% {
+    transform: translate(var(--tx, 200px), var(--ty, -200px)) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes energyWave {
+  0% {
+    transform: translateX(-100%) scaleY(1);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0%) scaleY(2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) scaleY(1);
+    opacity: 0;
+  }
+}
+
+@keyframes energyNode {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.energy-particle {
+  --tx: random(-100px, 100px);
+  --ty: random(-100px, 100px);
+  animation: energyParticle 4s infinite;
+}
+
+.energy-wave {
+  animation: energyWave 8s infinite linear;
+}
+
+.energy-node {
+  animation: energyNode 6s infinite ease-in-out;
+  filter: blur(20px);
+}
+
+/* Update the gradient animation for section titles */
+.section-title-line {
+  @apply h-1 w-24 mx-auto rounded-full;
+  background: linear-gradient(to right, theme('colors.primary'), theme('colors.accent'));
+  background-size: 200% 100%;
+  animation: gradientFlow 4s linear infinite;
+}
+
+/* Add these new animations to your existing animations section */
+
+@keyframes shield-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zap-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2);
+  }
+}
+
+.animate-shield {
+  animation: shield-pulse 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-pulse-fast {
+  animation: zap-pulse 1.5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Update the icon animations in your existing CSS */
+
+@keyframes shield-shimmer {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes shield-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(12, 120, 189, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px 2px rgba(12, 120, 189, 0.3);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zap-energy {
+  0%, 100% {
+    color: var(--secondary-color);
+    filter: brightness(1);
+  }
+  50% {
+    color: #fbbf24; /* Warm yellow color */
+    filter: brightness(1.3) drop-shadow(0 0 8px rgba(251, 191, 36, 0.5));
+  }
+}
+
+.animate-shield {
+  animation: shield-shimmer 4s ease-in-out infinite;
+  position: relative;
+}
+
+.animate-shield::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 100%
+  );
+  animation: shield-glow 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite; /* Slowed down from 8s to 12s */
+}
+
+.animate-pulse-fast {
+  animation: zap-energy 3s ease-in-out infinite; /* Slowed down from 1.5s to 3s */
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s ease-in-out infinite; /* Slowed down from 3s to 4s */
+}
+
+/* Update these specific animations in your existing CSS */
+
+@keyframes shield-ripple {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(12, 120, 189, 0.3);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(12, 120, 189, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(12, 120, 189, 0);
+  }
+}
+
+@keyframes shield-shine {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes zap-energy {
+  0%, 100% {
+    color: var(--secondary-color);
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    /* Changed to a more muted, professional yellow */
+    color: #F59E0B; /* Amber-500 from Tailwind */
+    filter: brightness(1.2) drop-shadow(0 0 6px rgba(245, 158, 11, 0.4));
+    transform: scale(1.05);
+  }
+}
+
+.animate-shield {
+  animation: shield-ripple 6s ease-in-out infinite;
+  position: relative;
+}
+
+.animate-shield::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(12, 120, 189, 0.1) 25%,
+    rgba(12, 120, 189, 0.3) 50%,
+    rgba(12, 120, 189, 0.1) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shield-shine 8s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite; /* Slowed down further */
+}
+
+.animate-pulse-fast {
+  animation: zap-energy 5s ease-in-out infinite; /* Slowed down to 5s */
+}
+
+.animate-pulse-slow {
+  animation: pulse 6s ease-in-out infinite; /* Slowed down to 6s */
+}
+
+/* Add these animations to your existing index.css */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 20s ease-out infinite alternate;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* Add this to your existing CSS */
+@layer components {
+  .google-maps {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+/* Add to your existing CSS */
+.achievements-carousel {
+  padding: 2rem 0;
+}
+
+.achievements-carousel .swiper-slide {
+  transition: all 0.4s ease;
+  opacity: 0.6;
+}
+
+.achievements-carousel .swiper-slide-active {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.achievements-carousel .swiper-slide-prev,
+.achievements-carousel .swiper-slide-next {
+  opacity: 0.8;
+}
+
+.achievements-carousel .swiper-pagination {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.achievements-carousel .swiper-pagination-bullet {
+  background: var(--primary-color);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.achievements-carousel .swiper-pagination-bullet-active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Achievement Carousel Styles */
+.achievements-carousel-container {
+  padding: 2rem 0;
+}
+
+.achievements-carousel {
+  padding: 2rem 0 4rem;
+}
+
+.achievements-carousel .swiper-slide {
+  transition: all 0.4s ease;
+  opacity: 0.6;
+}
+
+.achievements-carousel .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.achievements-carousel .swiper-slide-prev,
+.achievements-carousel .swiper-slide-next {
+  opacity: 0.8;
+}
+
+.achievements-carousel .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.achievements-carousel .swiper-pagination-bullet {
+  background: var(--primary-color, #0088cc);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.achievements-carousel .swiper-pagination-bullet-active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.achievements-carousel .swiper-button-prev,
+.achievements-carousel .swiper-button-next {
+  color: #fff;
+  transform: translateY(-50%);
+}
+
+.achievements-carousel .swiper-button-prev:after,
+.achievements-carousel .swiper-button-next:after {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .achievements-carousel {
+    padding: 1rem 0 3rem;
+  }
+  
+  .achievements-carousel .swiper-slide {
+    opacity: 1;
+  }
+}
+
+/* Add to your existing CSS */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.achievements-carousel .swiper-slide {
+  cursor: pointer;
+}
+
+/* Modal animations */
+.modal-overlay {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Google Translate Tweaks */
+.goog-te-gadget {
+  font-family: inherit !important;
+}
+
+.goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.goog-te-gadget img {
+  display: none !important;
+}
+
+.goog-te-gadget-simple > span {
+  display: none !important;
+}
+
+.goog-te-menu-value {
+  color: #374151 !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
+.goog-te-menu-value:hover {
+  text-decoration: none !important;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
