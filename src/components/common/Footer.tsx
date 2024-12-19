@@ -33,7 +33,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4">الثلاثية للطاقة الحديثة</h3>
+              <h3 className="text-2xl font-bold mb-4">الثلاثية الحديثة للطاقة </h3>
               <p className="text-gray-300 mb-6">
                 شركة رائدة في مجال حلول الطاقة المتكاملة، نقدم خدمات عالية الجودة في مجال أنظمة الغاز المركزي والمولدات والتوربينات.
               </p>
@@ -99,7 +99,7 @@ export default function Footer() {
                 >
                   شركة الصبّار للدعاية والإعلان
                 </a>
-                {' '}، جميع الحقوق محفوظة الشركة الثلاثية للطاقة الحديثة
+                {' '}، جميع الحقوق محفوظة الشركة الثلاثية الحديثة للطاقة 
               </p>
             </div>
           </div>

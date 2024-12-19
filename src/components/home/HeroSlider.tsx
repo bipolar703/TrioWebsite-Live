@@ -1,106 +1,97 @@
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
-import { HeroSlide } from '../../types/heroSlide';
+import { Autoplay, Navigation, Pagination, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import { Link } from 'react-router-dom';
 
-interface HeroSliderProps {
-  slides: HeroSlide[];
+interface HeroSlide {
+  id: number;
+  image: string;
+  title: string;
+  subtitle: string;
+  left_button_text: string;
+  left_button_link: string;
+  right_button_text: string;
+  right_button_link: string;
 }
 
-export default function HeroSlider({ slides }: HeroSliderProps) {
-  const navigate = useNavigate();
+export default function HeroSlider() {
+  const [slides, setSlides] = useState<HeroSlide[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSlides = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/hero-slides');
+        if (!response.ok) throw new Error('Failed to fetch slides');
+        const data = await response.json();
+        setSlides(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch slides');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchSlides();
+  }, []);
+
+  if (isLoading) return <div className="h-[600px] bg-gray-100 animate-pulse"></div>;
+  if (error) return <div className="h-[600px] bg-red-50 flex items-center justify-center text-red-500">{error}</div>;
+  if (slides.length === 0) return null;
 
   return (
-    <div className="relative">
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay, EffectFade]}
-        effect="fade"
-        pagination={{
-          clickable: true,
-          bulletActiveClass: 'swiper-pagination-bullet-active',
-          renderBullet: (index, className) => {
-            return `<span class="${className} transition-all duration-300"></span>`;
-          },
-        }}
-        navigation={{
-          prevEl: '.hero-swiper-button-prev',
-          nextEl: '.hero-swiper-button-next',
-        }}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        dir="rtl"
-        className="h-[90vh] w-full relative group touch-pan-y"
-        touchRatio={1.5}
-        grabCursor={true}
-        resistance={true}
-        resistanceRatio={0.85}
-      >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
-            <div className="relative w-full h-full">
-              {/* Left and Right Click Areas for Mobile */}
-              <div className="md:hidden absolute inset-y-0 right-0 w-1/4 z-10" onClick={() => document.querySelector('.hero-swiper-button-prev')?.dispatchEvent(new Event('click'))} />
-              <div className="md:hidden absolute inset-y-0 left-0 w-1/4 z-10" onClick={() => document.querySelector('.hero-swiper-button-next')?.dispatchEvent(new Event('click'))} />
-              
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="absolute inset-0 w-full h-full object-cover"
-                draggable="false"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
-              <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
-              
-              <div className="relative h-full flex items-center justify-center text-center px-4">
-                <div className="max-w-4xl mx-auto">
-                  <h1 className="text-3xl md:text-6xl font-bold text-white mb-4 animate-fadeIn">
-                    {slide.title}
-                  </h1>
-                  <p className="text-lg md:text-2xl text-white mb-8 animate-fadeIn animation-delay-200">
-                    {slide.subtitle}
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-4 animate-fadeIn animation-delay-400">
-                    <button
-                      onClick={() => navigate(slide.left_button_link)}
-                      className="bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 text-sm md:text-base"
+    <Swiper
+      modules={[Autoplay, Navigation, Pagination, EffectFade]}
+      effect="fade"
+      spaceBetween={0}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
+      loop={true}
+      className="h-[600px]"
+    >
+      {slides.map((slide) => (
+        <SwiperSlide key={slide.id}>
+          <div
+            className="relative h-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${slide.image})` }}
+          >
+            <div className="absolute inset-0 bg-black bg-opacity-50">
+              <div className="container mx-auto h-full flex flex-col justify-center items-center text-center text-white px-4">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">{slide.title}</h1>
+                <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl">{slide.subtitle}</p>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  {slide.left_button_text && (
+                    <Link
+                      to={slide.left_button_link}
+                      className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition-colors"
                     >
                       {slide.left_button_text}
-                    </button>
-                    <button
-                      onClick={() => navigate(slide.right_button_link)}
-                      className="bg-white hover:bg-gray-100 text-primary px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 text-sm md:text-base"
+                    </Link>
+                  )}
+                  {slide.right_button_text && (
+                    <Link
+                      to={slide.right_button_link}
+                      className="bg-white hover:bg-gray-100 text-primary font-bold py-3 px-8 rounded-lg transition-colors"
                     >
                       {slide.right_button_text}
-                    </button>
-                  </div>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      
-      {/* Navigation Buttons - Desktop Only */}
-      <button 
-        className="hero-swiper-button-prev hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-primary p-2 rounded-full shadow-lg transition-all items-center justify-center"
-        aria-label="السابق"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button>
-      <button 
-        className="hero-swiper-button-next hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-primary p-2 rounded-full shadow-lg transition-all items-center justify-center"
-        aria-label="التالي"
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </button>
-    </div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

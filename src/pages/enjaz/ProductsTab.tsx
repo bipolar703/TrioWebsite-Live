@@ -452,4 +452,4 @@ export default function ProductsTab({ handlePreview }: ProductsTabProps) {
       </div>
     </div>
   );
-} 
+}

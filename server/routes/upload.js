@@ -1,25 +1,42 @@
 import express from 'express';
 import { auth } from '../middleware/auth.js';
-import { uploadImage } from '../controllers/upload.js';
-import multer from 'multer';
-import path from 'path';
+import { upload, deleteFile } from '../config/upload.js';
 
 const router = express.Router();
 
-// Configure multer for file upload
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(process.cwd(), 'public', req.body.uploadPath || 'uploads'));
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
+// Upload single file
+router.post('/:type', auth, upload.single('file'), (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    // Return the file path that can be stored in the database
+    const filePath = req.file.path.replace(/\\/g, '/'); // Convert Windows path to URL format
+    res.json({
+      path: filePath,
+      url: `${process.env.API_URL}/${filePath}`
+    });
+  } catch (error) {
+    console.error('Upload error:', error);
+    res.status(500).json({ message: 'Error uploading file' });
   }
 });
 
-const upload = multer({ storage: storage });
+// Delete file
+router.delete('/', auth, (req, res) => {
+  try {
+    const { path } = req.body;
+    if (!path) {
+      return res.status(400).json({ message: 'File path is required' });
+    }
 
-// Protected routes
-router.post('/image', auth, upload.single('image'), uploadImage);
+    deleteFile(path);
+    res.json({ message: 'File deleted successfully' });
+  } catch (error) {
+    console.error('Delete error:', error);
+    res.status(500).json({ message: 'Error deleting file' });
+  }
+});
 
 export default router; 
