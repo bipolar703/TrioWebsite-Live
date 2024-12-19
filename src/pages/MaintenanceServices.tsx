@@ -1,12 +1,16 @@
-import { Shield, Clock, Calendar, Wrench, CheckCircle, AlertTriangle, Phone, ChevronLeft } from 'lucide-react';
-import { useInView } from 'react-intersection-observer';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
+import { Shield, Clock, Calendar, CheckCircle, ChevronLeft, Phone } from 'lucide-react';
+import { useSiteSettings } from '../hooks/useSiteSettings';
 
 export default function MaintenanceServices() {
   const { ref: contentRef, inView: contentIsVisible } = useInView({
     triggerOnce: true,
     threshold: 0.2
   });
+
+  const { siteSettings } = useSiteSettings();
 
   const maintenanceTypes = [
     {
@@ -45,26 +49,23 @@ export default function MaintenanceServices() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/90">
-          <div className="absolute inset-0 bg-grid-white/[0.1] bg-[length:20px_20px]" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">خدمات الصيانة</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 animate-fade-in-up">
-            حلول صيانة متكاملة تناسب احتياجات منشأتك مع ضمان أعلى معايير الجودة والكفاءة
+      <section className="bg-primary text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-bold mb-4">خدمات الصيانة</h1>
+          <p className="text-xl text-blue-100">
+            نقدم خدمات صيانة احترافية لضمان كفاءة وسلامة أنظمة الغاز
           </p>
         </div>
       </section>
 
-      {/* Maintenance Types Section - Enhanced with CTAs */}
-      <section className="py-20 bg-gray-50">
+      {/* Services Grid */}
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={contentRef}
-            className={`grid md:grid-cols-3 gap-8 transform transition-all duration-1000 ${
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 ${
               contentIsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
@@ -100,34 +101,15 @@ export default function MaintenanceServices() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 bg-white">
+      {/* Call to Action */}
+      <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl p-8 md:p-12">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-bold mb-6 text-gray-900">لماذا تختار خدمات الصيانة لدينا؟</h2>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Wrench className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-2">فريق فني متخصص</h3>
-                      <p className="text-gray-600">مهندسون وفنيون مؤهلون بخبرة عالية</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 bg-accent/10 rounded-lg">
-                      <AlertTriangle className="h-6 w-6 text-accent" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-2">استجابة سريعة</h3>
-                      <p className="text-gray-600">خدمة طوارئ على مدار 24 ساعة</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-4">نحن هنا لمساعدتك</h2>
+              <p className="text-gray-600 mb-6">
+                فريقنا الفني جاهز لتقديم المساعدة والدعم على مدار الساعة. اتصل بنا الآن للحصول على خدمة صيانة احترافية.
+              </p>
               <div className="bg-white p-6 rounded-xl shadow-lg">
                 <h3 className="text-xl font-bold mb-4">احصل على استشارة مجانية</h3>
                 <p className="text-gray-600 mb-6">
@@ -135,8 +117,11 @@ export default function MaintenanceServices() {
                 </p>
                 <div className="flex items-center gap-4">
                   <Phone className="h-6 w-6 text-primary" />
-                  <a href="tel:+966530009914" className="text-lg font-semibold text-primary hover:text-accent transition-colors ltr">
-                    +966 530009914
+                  <a 
+                    href={`tel:${siteSettings?.phone_number}`} 
+                    className="text-lg font-semibold text-primary hover:text-accent transition-colors ltr"
+                  >
+                    {siteSettings?.phone_number || 'جاري التحميل...'}
                   </a>
                 </div>
                 <Link
@@ -146,6 +131,14 @@ export default function MaintenanceServices() {
                   تواصل معنا
                 </Link>
               </div>
+            </div>
+            <div className="relative">
+              <img
+                src="/src/images/maintenance-services.jpg"
+                alt="خدمات الصيانة"
+                className="rounded-2xl shadow-lg"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
             </div>
           </div>
         </div>

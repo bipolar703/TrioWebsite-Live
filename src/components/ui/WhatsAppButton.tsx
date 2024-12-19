@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import WhatsAppIcon from '../../images/WhatsApp.svg';
+import { useSiteSettings } from '../../hooks/useSiteSettings';
 
 export default function WhatsAppButton() {
   const [showOverlay, setShowOverlay] = useState(false);
   const [bottomOffset, setBottomOffset] = useState('4');
   const [isVisible, setIsVisible] = useState(true);
+  const { siteSettings } = useSiteSettings();
 
   const handleStartChat = () => {
-    window.open('https://wa.me/966530009914', '_blank', 'noopener,noreferrer');
+    if (siteSettings?.whatsapp_number) {
+      const whatsappNumber = siteSettings.whatsapp_number.replace(/\D/g, '');
+      window.open(`https://wa.me/${whatsappNumber}`, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const updateBottomOffset = () => {
@@ -28,7 +33,6 @@ export default function WhatsAppButton() {
 
   useEffect(() => {
     updateBottomOffset();
-
     window.addEventListener('scroll', updateBottomOffset);
 
     const isHidden = sessionStorage.getItem('whatsappHidden') === 'true';
@@ -39,7 +43,7 @@ export default function WhatsAppButton() {
     };
   }, []);
 
-  if (!isVisible) return null;
+  if (!isVisible || !siteSettings?.whatsapp_number) return null;
 
   return (
     <div className={`fixed bottom-${bottomOffset} left-4 z-50 transition-all duration-300`}>

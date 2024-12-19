@@ -2,26 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { HeroSlide } from '../../types/heroSlide';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-interface SlideButton {
-  text: string;
-  link: string;
-  style: string;
-}
-
-interface Slide {
-  image: string;
-  title: string;
-  subtitle: string;
-  buttons: SlideButton[];
-}
-
 interface HeroSliderProps {
-  slides: Slide[];
+  slides: HeroSlide[];
 }
 
 export default function HeroSlider({ slides }: HeroSliderProps) {
@@ -55,8 +43,8 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
         resistance={true}
         resistanceRatio={0.85}
       >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
+        {slides.map((slide) => (
+          <SwiperSlide key={slide.id}>
             <div className="relative w-full h-full">
               {/* Left and Right Click Areas for Mobile */}
               <div className="md:hidden absolute inset-y-0 right-0 w-1/4 z-10" onClick={() => document.querySelector('.hero-swiper-button-prev')?.dispatchEvent(new Event('click'))} />
@@ -80,15 +68,18 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                     {slide.subtitle}
                   </p>
                   <div className="flex flex-wrap justify-center gap-4 animate-fadeIn animation-delay-400">
-                    {slide.buttons.map((button, buttonIndex) => (
-                      <button
-                        key={buttonIndex}
-                        onClick={() => navigate(button.link)}
-                        className={`${button.style} px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 text-sm md:text-base`}
-                      >
-                        {button.text}
-                      </button>
-                    ))}
+                    <button
+                      onClick={() => navigate(slide.left_button_link)}
+                      className="bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 text-sm md:text-base"
+                    >
+                      {slide.left_button_text}
+                    </button>
+                    <button
+                      onClick={() => navigate(slide.right_button_link)}
+                      className="bg-white hover:bg-gray-100 text-primary px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 text-sm md:text-base"
+                    >
+                      {slide.right_button_text}
+                    </button>
                   </div>
                 </div>
               </div>

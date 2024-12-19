@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -12,19 +15,15 @@ module.exports = {
         sans: ['Cairo', 'sans-serif'],
       },
       animation: {
-        'fadeIn': 'fadeIn 0.2s ease-in forwards',
-        'gradient': 'gradient 8s ease infinite',
-        'slideIn': 'slideIn 1s ease-out forwards',
-        'spin-slow': 'spin 2s linear infinite',
-        'spin-reverse': 'spin-reverse 2s linear infinite',
-        'float': 'float 3s ease-in-out infinite',
-        'slideUp': 'slideUp 0.5s ease-out forwards',
+        'gradient': 'gradient 15s ease infinite',
+        'float-slow': 'float 8s ease-in-out infinite',
+        'float-medium': 'float 6s ease-in-out infinite',
+        'float-fast': 'float 4s ease-in-out infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 8s linear infinite',
+        'shield': 'shield 2s ease-in-out infinite',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
         gradient: {
           '0%, 100%': {
             'background-size': '200% 200%',
@@ -35,42 +34,39 @@ module.exports = {
             'background-position': 'right center'
           },
         },
-        slideIn: {
-          '0%': { 
-            opacity: '0', 
-            transform: 'translateY(50px)' 
-          },
-          '100%': { 
-            opacity: '1', 
-            transform: 'translateY(0)' 
-          },
-        },
-        'spin-reverse': {
-          '0%': { transform: 'rotate(360deg)' },
-          '100%': { transform: 'rotate(0deg)' },
-        },
         float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        slideUp: {
-          '0%': { 
-            opacity: '0',
-            transform: 'translateY(20px)'
+          '0%, 100%': {
+            transform: 'translateY(0)',
           },
-          '100%': {
+          '50%': {
+            transform: 'translateY(-20px)',
+          },
+        },
+        shield: {
+          '0%, 100%': {
+            transform: 'scale(1)',
             opacity: '1',
-            transform: 'translateY(0)'
-          }
-        }
+          },
+          '50%': {
+            transform: 'scale(1.1)',
+            opacity: '0.8',
+          },
+        },
       },
-      scale: {
-        '115': '1.15',
+      transitionProperty: {
+        'custom': 'all',
+      },
+      transitionDuration: {
+        'custom': '300ms',
+      },
+      transitionTimingFunction: {
+        'custom': 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      }
+        'grid-white': 'url("/grid-white.svg")',
+      },
     },
   },
   plugins: [],
-};
+}
