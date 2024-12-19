@@ -1,18 +1,51 @@
-import { useState } from 'react';
-import { MessageCircle, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { X } from 'lucide-react';
+import WhatsAppIcon from '../../images/WhatsApp.svg';
 
 export default function WhatsAppButton() {
   const [showOverlay, setShowOverlay] = useState(false);
+  const [bottomOffset, setBottomOffset] = useState('4');
+  const [isVisible, setIsVisible] = useState(true);
 
   const handleStartChat = () => {
     window.open('https://wa.me/966530009914', '_blank', 'noopener,noreferrer');
   };
 
+  const updateBottomOffset = () => {
+    const scrollToTopButton = document.querySelector('.scroll-to-top-button');
+    if (scrollToTopButton) {
+      setBottomOffset('16');
+    } else {
+      setBottomOffset('4');
+    }
+  };
+
+  const handleHide = () => {
+    setIsVisible(false);
+    setShowOverlay(false);
+    sessionStorage.setItem('whatsappHidden', 'true');
+  };
+
+  useEffect(() => {
+    updateBottomOffset();
+
+    window.addEventListener('scroll', updateBottomOffset);
+
+    const isHidden = sessionStorage.getItem('whatsappHidden') === 'true';
+    setIsVisible(!isHidden);
+
+    return () => {
+      window.removeEventListener('scroll', updateBottomOffset);
+    };
+  }, []);
+
+  if (!isVisible) return null;
+
   return (
-    <div className="fixed bottom-4 left-4 z-50">
+    <div className={`fixed bottom-${bottomOffset} left-4 z-50 transition-all duration-300`}>
       {showOverlay && (
         <div className="absolute bottom-16 left-0 mb-2 bg-white rounded-lg shadow-lg p-4 w-72 animate-fadeIn">
-          <button 
+          <button
             onClick={() => setShowOverlay(false)}
             className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
             aria-label="إغلاق"
@@ -27,14 +60,20 @@ export default function WhatsAppButton() {
           >
             بدء المحادثة
           </button>
+          <button
+            onClick={handleHide}
+            className="w-full mt-2 text-gray-600 py-2 px-4 rounded-lg hover:bg-gray-100 transition-colors text-sm"
+          >
+            إخفاء الزر
+          </button>
         </div>
       )}
       <button
         onClick={() => setShowOverlay(!showOverlay)}
-        className="bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:bg-[#1ea856] transition-all duration-300"
+        className="transition-all duration-300"
         aria-label="واتساب"
       >
-        <MessageCircle className="h-6 w-6" />
+        <img src={WhatsAppIcon} alt="WhatsApp" className="h-10 w-10" />
       </button>
     </div>
   );

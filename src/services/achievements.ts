@@ -40,6 +40,23 @@ export async function deleteAchievement(id: string): Promise<void> {
   }
 }
 
+export async function updateAchievement(id: string, achievement: Omit<Achievement, 'id'>): Promise<Achievement> {
+  try {
+    const response = await fetch(`/api/achievements/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(achievement),
+    });
+    if (!response.ok) throw new Error('Failed to update achievement');
+    return await response.json();
+  } catch (error) {
+    console.error('Error updating achievement:', error);
+    throw error;
+  }
+}
+
 export async function uploadImage(file: File): Promise<string> {
   try {
     const formData = new FormData();
@@ -57,4 +74,4 @@ export async function uploadImage(file: File): Promise<string> {
     console.error('Error uploading image:', error);
     throw error;
   }
-} 
+}

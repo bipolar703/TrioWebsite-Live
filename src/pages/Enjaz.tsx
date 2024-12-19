@@ -1,10 +1,9 @@
 import { useState, useRef } from 'react';
 import { Upload, X, Loader2, Trash2, Edit2 } from 'lucide-react';
 import { toast } from 'sonner';
-import { uploadToImgBB } from '../services/imgbb';
-import { compressImage } from '../utils/imageCompression';
 import { useAchievements, Achievement } from '../hooks/useAchievements';
 import { useAuth } from '../hooks/useAuth';
+import { uploadImage } from '../services/achievements';
 
 export default function Enjaz() {
   const {
@@ -43,9 +42,7 @@ export default function Enjaz() {
 
     setIsUploading(true);
     try {
-      const compressedFile = await compressImage(file);
-      const imageUrl = await uploadToImgBB(compressedFile);
-      
+      const imageUrl = await uploadImage(file);
       setNewAchievement(prev => ({ ...prev, image: imageUrl }));
       toast.success('تم رفع الصورة بنجاح');
     } catch (uploadError) {
