@@ -1,48 +1,55 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 
-const CORRECT_PASSWORD = 'trioEnergy2025+123';
-const AUTH_KEY = 'trio_energy_auth';
+interface AuthState {
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  token: string | null;
+}
 
 export function useAuth() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [state, setState] = useState<AuthState>({
+    isAuthenticated: false,
+    isLoading: true,
+    token: null
+  });
 
-  // Check auth status on mount and when localStorage changes
   useEffect(() => {
-    const checkAuth = () => {
-      const authStatus = localStorage.getItem(AUTH_KEY);
-      setIsAuthenticated(authStatus === 'true');
-      setIsLoading(false);
-    };
-    
-    checkAuth();
-
-    // Listen for storage changes (for multi-tab support)
-    window.addEventListener('storage', checkAuth);
-    return () => window.removeEventListener('storage', checkAuth);
+    const token = localStorage.getItem('token');
+    setState({
+      isAuthenticated: !!token,
+      isLoading: false,
+      token
+    });
   }, []);
 
-  const login = (password: string): boolean => {
-    if (password === CORRECT_PASSWORD) {
-      localStorage.setItem(AUTH_KEY, 'true');
-      setIsAuthenticated(true);
-      
-      // Get the redirect path from location state or default to /enjaz
-      const from = location.state?.from?.pathname || '/enjaz';
-      navigate(from, { replace: true });
+  const login = (password: string) => {
+    if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
+      const token = 'your-jwt-token'; // In a real app, this would be a JWT from your server
+      localStorage.setItem('token', token);
+      setState({
+        isAuthenticated: true,
+        isLoading: false,
+        token
+      });
       return true;
     }
     return false;
   };
 
   const logout = () => {
-    localStorage.removeItem(AUTH_KEY);
-    setIsAuthenticated(false);
-    navigate('/login');
+    localStorage.removeItem('token');
+    setState({
+      isAuthenticated: false,
+      isLoading: false,
+      token: null
+    });
   };
 
-  return { isAuthenticated, isLoading, login, logout };
+  return {
+    isAuthenticated: state.isAuthenticated,
+    isLoading: state.isLoading,
+    token: state.token,
+    login,
+    logout
+  };
 } 

@@ -5,11 +5,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import XLogo from '../components/ui/XLogo';
 import { toast } from 'sonner';
 import GoogleMap from '../components/ui/GoogleMap';
+import { useSiteSettings } from '../hooks/useSiteSettings';
 
 export default function Contact() {
   const location = useLocation();
   const navigate = useNavigate();
   const { maintenanceType, message } = location.state || {};
+  const { siteSettings } = useSiteSettings();
 
   // Form state
   const [formData, setFormData] = useState({
@@ -92,14 +94,24 @@ export default function Contact() {
                   <Phone className="h-6 w-6 text-primary ml-4" />
                   <div>
                     <h3 className="font-semibold mb-1">الهاتف</h3>
-                    <a href="tel:+966530009914" className="text-gray-600 ltr hover:text-primary transition-custom">+966 530009914</a>
+                    <a 
+                      href={`tel:${siteSettings?.phone_number}`} 
+                      className="text-gray-600 ltr hover:text-primary transition-custom"
+                    >
+                      {siteSettings?.phone_number || 'جاري التحميل...'}
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <Mail className="h-6 w-6 text-primary ml-4" />
                   <div>
                     <h3 className="font-semibold mb-1">البريد الإلكتروني</h3>
-                    <a href="mailto:sales@triome.com.sa" className="text-gray-600 ltr hover:text-primary transition-custom">sales@triome.com.sa</a>
+                    <a 
+                      href={`mailto:${siteSettings?.email}`} 
+                      className="text-gray-600 ltr hover:text-primary transition-custom"
+                    >
+                      {siteSettings?.email || 'sales@triome.com.sa'}
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -107,12 +119,12 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">العنوان</h3>
                     <a 
-                      href="https://maps.app.goo.gl/N41cWKNskZyoFSS79" 
+                      href={siteSettings?.location_url || 'https://maps.app.goo.gl/N41cWKNskZyoFSS79'} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-gray-600 hover:text-primary transition-custom"
                     >
-                      <div>المملكة العربية السعودية</div>
+                      <div>{siteSettings?.location_title || 'المملكة العربية السعودية'}</div>
                       <div className="ltr">P.O Box: 23446 Jeddah 6632</div>
                     </a>
                   </div>
