@@ -1,0 +1,57 @@
+# Enable rewrite engine
+RewriteEngine On
+RewriteBase /
+
+# Handle Authorization Header
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
+# Redirect to HTTPS if not already
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+# If the request is not for a valid file
+RewriteCond %{REQUEST_FILENAME} !-f
+# If the request is not for a valid directory
+RewriteCond %{REQUEST_FILENAME} !-d
+# If the request is not for a valid link
+RewriteCond %{REQUEST_FILENAME} !-l
+# Route everything else to index.html
+RewriteRule ^ index.html [QSA,L]
+
+# Security Headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+# Enable CORS
+Header set Access-Control-Allow-Origin "*"
+
+# Cache Control for static assets
+<FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico|svg|woff2?|ttf|eot)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+# Disable directory browsing
+Options -Indexes
+
+# Protect against common vulnerabilities
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Protect sensitive files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Compress text files
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
+</IfModule>
+
+# Set default character set
+AddDefaultCharset UTF-8 
